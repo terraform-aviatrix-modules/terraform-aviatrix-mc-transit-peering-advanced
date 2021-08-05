@@ -13,7 +13,7 @@ locals {
     }
   ]
 
-  all_peerings = { for entry in setproduct(var.set1_data, var.set2_data) : "${entry[0].set1_name}_${entry[1].set2_name}" => merge(entry[0], entry[1]) }
+  all_peerings = { for entry in setproduct(local.set1_data, local.set2_data) : "${entry[0].set1_name}_${entry[1].set2_name}" => merge(entry[0], entry[1]) }
 }
 
 resource "aviatrix_transit_gateway_peering" "peering" {
