@@ -1,10 +1,10 @@
 variable "set1" {
-  type        = map(object)
+  type        = map(any)
   description = "Map object of transit gateway names and asn's to create full mesh peering from"
 }
 
 variable "set2" {
-  type        = map(object)
+  type        = map(any)
   description = "Map object of transit gateway names and asn's to create full mesh peering from"
 }
 
