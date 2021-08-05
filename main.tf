@@ -18,10 +18,10 @@ locals {
 
 resource "aviatrix_transit_gateway_peering" "peering" {
   for_each                                    = local.all_peerings
-  transit_gateway_name1                       = each.value.c1_name
-  transit_gateway_name2                       = each.value.c2_name
-  prepend_as_path1                            = [each.value.c1_as]
-  prepend_as_path2                            = [each.value.c2_as]
+  transit_gateway_name1                       = each.value.set1_name
+  transit_gateway_name2                       = each.value.set2_name
+  prepend_as_path1                            = [each.value.set1_as]
+  prepend_as_path2                            = [each.value.set2_as]
   enable_peering_over_private_network         = var.enable_peering_over_private_network
   gateway1_excluded_network_cidrs             = var.excluded_cidrs
   gateway2_excluded_network_cidrs             = var.excluded_cidrs
