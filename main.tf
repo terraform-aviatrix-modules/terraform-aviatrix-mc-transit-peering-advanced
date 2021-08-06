@@ -2,14 +2,14 @@ locals {
   set1_data = [
     for name, asn in var.set1 : {
       set1_name = name
-      set1_as   = [for i in range(1, var.prepend_length) : concat([asn], [asn[0]])]
+      set1_as   = [for i in range(var.prepend_length) : asn]
     }
   ]
 
   set2_data = [
     for name, asn in var.set2 : {
       set2_name = name
-      set2_as   = [for i in range(1, var.prepend_length) : concat([asn], [asn[0]])]
+      set2_as   = [for i in range(var.prepend_length) : asn]
     }
   ]
 
