@@ -20,8 +20,8 @@ resource "aviatrix_transit_gateway_peering" "peering" {
   for_each                                    = local.all_peerings
   transit_gateway_name1                       = each.value.set1_name
   transit_gateway_name2                       = each.value.set2_name
-  prepend_as_path1                            = var.as_path_prepend ? [each.value.set1_as] : null
-  prepend_as_path2                            = var.as_path_prepend ? [each.value.set2_as] : null
+  prepend_as_path1                            = var.as_path_prepend ? each.value.set1_as : null
+  prepend_as_path2                            = var.as_path_prepend ? each.value.set2_as : null
   enable_peering_over_private_network         = var.enable_peering_over_private_network
   gateway1_excluded_network_cidrs             = var.excluded_cidrs
   gateway2_excluded_network_cidrs             = var.excluded_cidrs
