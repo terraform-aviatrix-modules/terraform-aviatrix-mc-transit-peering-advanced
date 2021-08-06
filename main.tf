@@ -2,14 +2,14 @@ locals {
   set1_data = [
     for name, asn in var.set1 : {
       set1_name = name
-      set1_as   = asn
+      set1_as   = [for i in range(1, var.prepend_length) : concat([asn], [asn[0]])]
     }
   ]
 
   set2_data = [
     for name, asn in var.set2 : {
       set2_name = name
-      set2_as   = asn
+      set2_as   = [for i in range(1, var.prepend_length) : concat([asn], [asn[0]])]
     }
   ]
 
@@ -20,8 +20,8 @@ resource "aviatrix_transit_gateway_peering" "peering" {
   for_each                                    = local.all_peerings
   transit_gateway_name1                       = each.value.set1_name
   transit_gateway_name2                       = each.value.set2_name
-  prepend_as_path1                            = [each.value.set1_as]
-  prepend_as_path2                            = [each.value.set2_as]
+  prepend_as_path1                            = var.as_path_prepend ? [each.value.set1_as] : null
+  prepend_as_path2                            = var.as_path_prepend ? [each.value.set2_as] : null
   enable_peering_over_private_network         = var.enable_peering_over_private_network
   gateway1_excluded_network_cidrs             = var.excluded_cidrs
   gateway2_excluded_network_cidrs             = var.excluded_cidrs

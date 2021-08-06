@@ -47,6 +47,8 @@ set2 | map of transit gateways and ASN
 
 key | default | value 
 :---|:---|:---
+as_path_prepend | false | Toggle to true to enable AS Path prepending for all peerings
+prepend_length | 1 | Amount of times AS Path is prepended
 enable_peering_over_private_network | false | Enable to use a private circuit for setting up peering
 excluded_cidrs | [] | list of excluded cidrs. This will be applied to all peerings on both sides. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
 enable_single_tunnel_mode | false | Enable single tunnel mode. Will be applied to all peerings. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.

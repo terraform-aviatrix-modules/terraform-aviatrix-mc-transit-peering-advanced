@@ -37,3 +37,15 @@ variable "tunnel_count" {
   description = "Amount of tunnels to build for insane mode over internet"
   default     = null
 }
+
+variable "prepend_length" {
+  type        = number
+  description = "Amount of times AS Path is prepended"
+  default     = 1
+}
+
+variable "as_path_prepend" {
+  type        = bool
+  description = "Toggle to true to enable AS Path prepending for all peers"
+  default     = false
+}
