@@ -48,11 +48,13 @@ set2 | map of transit gateways and ASN
 key | default | value 
 :---|:---|:---
 as_path_prepend | false | Toggle to true to enable AS Path prepending for all peerings
-prepend_length | 1 | Amount of times AS Path is prepended
-enable_peering_over_private_network | false | Enable to use a private circuit for setting up peering
-excluded_cidrs | [] | list of excluded cidrs. This will be applied to all peerings on both sides. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
-enable_single_tunnel_mode | false | Enable single tunnel mode. Will be applied to all peerings. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
+create_peerings | true | Toggle for setting peering resource creation on or off. When set to false, it only generates the peerings output so you can use it outside of this module.
 enable_insane_mode_encryption_over_internet | false | Enable insane mode over internet. Will be applied to all peerings. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
+enable_peering_over_private_network | false | Enable to use a private circuit for setting up peering
+enable_single_tunnel_mode | false | Enable single tunnel mode. Will be applied to all peerings. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
+excluded_cidrs | [] | list of excluded cidrs. This will be applied to all peerings on both sides. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
+prepend_length | 1 | Amount of times AS Path is prepended
+prune_list | [] | A list of maps for peerings that should not be created. Expects gateway name. Example: [ {"gw5" : "gw1"}, {"gw3" : "gw4"}, ]
 tunnel_count | | Amount of tunnels to build for insane mode over internet. Will be applied to all peerings. If you need more granularity, it is suggested to use the aviatrix_transit_gateway_peering resource directly in stead of this module.
 
 ### Outputs
