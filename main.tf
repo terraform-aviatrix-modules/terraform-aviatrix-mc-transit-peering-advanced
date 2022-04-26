@@ -14,7 +14,7 @@ locals {
   ]
 
   peerings_map = {
-    for entry in setproduct(local.set1_data, local.set2_data) : "${entry[0].set1_name}_${entry[1].set2_name}" => merge(entry[0], entry[1])  if !contains(var.prune_list, tomap({ (entry[0].set1_name) : (entry[1].set2_name) })) && !contains(var.prune_list, tomap({ (entry[1].set2_name) : (entry[0].set1_name) }))
+    for entry in setproduct(local.set1_data, local.set2_data) : "${entry[0].set1_name}_${entry[1].set2_name}" => merge(entry[0], entry[1]) if !contains(var.prune_list, tomap({ (entry[0].set1_name) : (entry[1].set2_name) })) && !contains(var.prune_list, tomap({ (entry[1].set2_name) : (entry[0].set1_name) }))
   }
 
   #Pass the peerings_map or an empty map to the resource, based on var.create_peerings.
